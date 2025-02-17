@@ -15,6 +15,13 @@ dependencies {
     testRuntimeOnly ("org.junit.platform:junit-platform-launcher")
     implementation ("org.springframework.boot:spring-boot-starter-web")
     implementation ("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation ("com.h2database:h2")
+    implementation ("org.flywaydb:flyway-core")
+    implementation("jakarta.servlet:jakarta.servlet-api:6.0.0")
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+    implementation("jakarta.validation:jakarta.validation-api:3.0.2")
+
 }
 
 tasks.test {

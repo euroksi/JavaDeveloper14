@@ -15,11 +15,13 @@ public class NoteController {
         this.noteService = noteService;
     }
 
+
     @GetMapping("/list")
     public String listNotes(Model model) {
         model.addAttribute("notes", noteService.listAll());
         return "note-list";
     }
+
 
     @PostMapping("/delete")
     public String deleteNote(@RequestParam("id") long id) {

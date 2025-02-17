@@ -1,4 +1,4 @@
-package com.example.demo.todolist.model.controller;
+package com.example.demo.todolist.model;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

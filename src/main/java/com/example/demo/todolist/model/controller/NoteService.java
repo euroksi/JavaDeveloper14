@@ -1,43 +1,41 @@
-package com.example.demo.todolist.model.controller;
+package com.example.todolist.service;
 
-import com.example.demo.todolist.model.Note;
+import com.example.todolist.model.Note;
+import com.example.todolist.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.List;
 
 @Service
 public class NoteService {
-    private final Map<Long, Note> notes = new HashMap<>();
-    private final AtomicLong idGenerator = new AtomicLong(1);
+    private final NoteRepository noteRepository;
+
+    public NoteService(NoteRepository noteRepository) {
+        this.noteRepository = noteRepository;
+    }
 
     public List<Note> listAll() {
-        return new ArrayList<>(notes.values());
+        return noteRepository.findAll();
     }
 
     public Note add(Note note) {
-        long id = idGenerator.getAndIncrement();
-        note.setId(id);
-        notes.put(id, note);
-        return note;
+        return noteRepository.save(note);
     }
 
     public void deleteById(long id) {
-        if (!notes.containsKey(id)) {
-            throw new NoSuchElementException("Note with ID " + id + " not found.");
-        }
-        notes.remove(id);
+        noteRepository.deleteById(id);
     }
+
     public void update(Note note) {
-        if (!notes.containsKey(note.getId())) {
-            throw new NoSuchElementException("Note with ID " + note.getId() + " not found.");
+        if (noteRepository.existsById(note.getId())) {
+            noteRepository.save(note);
+        } else {
+            throw new RuntimeException("Note not found");
         }
-        notes.put(note.getId(), note);
     }
+
     public Note getById(long id) {
-        if (!notes.containsKey(id)) {
-            throw new NoSuchElementException("Note with ID " + id + " not found.");
-        }
-        return notes.get(id);
+        return noteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Note not found"));
     }
 }
