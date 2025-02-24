@@ -1,6 +1,6 @@
 package com.example.demo.todolist.model.controller;
 
-import com.example.demo.todolist.model.Note;
+import model.Note;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

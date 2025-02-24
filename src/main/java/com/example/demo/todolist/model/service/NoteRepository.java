@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package com.example.demo.todolist.model.service;
 
 import com.example.todolist.model.Note;
 import org.springframework.data.jpa.repository.JpaRepository;
