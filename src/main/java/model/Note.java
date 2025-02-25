@@ -10,9 +10,9 @@ public class Note {
     private Long id;
 
     private String title;
+
     private String content;
 
-    // Геттери та сеттери
     public Long getId() {
         return id;
     }
